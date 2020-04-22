@@ -16,9 +16,8 @@
  */
 package hundirlaflota.tablero;
 
-import java.util.Arrays;
-
 /**
+ * Clase index, par las claves del tablero.
  *
  * @author Javier Tejedor
  */
@@ -26,30 +25,40 @@ public class Index implements Comparable<Index> {
 
     private int[] i;
 
+    /**
+     * Crea una instancia de Index a partir de un array de enteros
+     *
+     * @param i Array de enteros
+     */
     public Index(int[] i) {
         this.i = i;
     }
 
-    public int[] getI() {
+    private int[] getI() {
         return i;
     }
 
+    /**
+     * Compara las coordenadas de los dos index.
+     *
+     * @param t Index a comparar.
+     * @return 0 si son iguales.
+     */
     @Override
     public int compareTo(Index t) {
 
         return (this.i[0] - t.getI()[0]) * 10 - (this.i[1] - t.getI()[1]);
     }
 
+    /**
+     * Comprueba si son iguales los objetos a comparar.
+     *
+     * @param obj Objeto a comparar.
+     * @return Verdadero si son iguales.
+     */
     @Override
     public boolean equals(Object obj) {
-        return this.compareTo((Index) obj) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + Arrays.hashCode(this.i);
-        return hash;
+        return (obj instanceof Index) ? this.compareTo((Index) obj) == 0 : false;
     }
 
 }

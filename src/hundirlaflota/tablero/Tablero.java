@@ -21,17 +21,21 @@ import hundirlaflota.tablero.tipocasilla.TipoCasilla;
 import java.util.TreeMap;
 
 /**
+ * Clase que define el tablero genérico.
  *
  * @author Javier Tejedor
  */
 public class Tablero extends TreeMap<Index, Casilla> {
 
+    /**
+     * Crea un tablero con todas las casillas siendo agua.
+     */
     public Tablero() {
         super();
         generarTableroVacio();
     }
 
-    public void generarTableroVacio() {
+    private void generarTableroVacio() {
         for (int i = 0; i < Casilla.FILA_MAX; i++) {
             for (int j = 0; j < Casilla.COLUMNA_MAX; j++) {
                 this.put(new Index(new int[]{i, j}), new Casilla(i, j, new Agua()));
@@ -39,6 +43,15 @@ public class Tablero extends TreeMap<Index, Casilla> {
         }
     }
 
+    /**
+     * Cambia el tipo de casilla, desde una posicion inicial y hasta posicion
+     * final inclusive.
+     *
+     * @param posInicial Posicion Inicial
+     * @param posFinal Posicion Final
+     * @param tipo Tipo de Casilla
+     * @return Devuelve verdadero si todo ha ido correctamente.
+     */
     public boolean cambiarTipoCasillas(int[] posInicial, int[] posFinal, TipoCasilla tipo) {
 
         int deltaEjeX = posFinal[0] - posInicial[0];

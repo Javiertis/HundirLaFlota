@@ -17,6 +17,7 @@
 package hundirlaflota.tablero.tipocasilla;
 
 /**
+ * Clase que define el tipo de casilla génerico.
  *
  * @author Javier Tejedor
  */
@@ -26,19 +27,35 @@ public class TipoCasilla {
     private boolean tocado;
     private int tipoIndex;
 
+    /**
+     * Genera una casilla vacía
+     */
     public TipoCasilla() {
         tocado = false;
         setTipoIndex();
     }
 
+    /**
+     * Configura las partes restantes/iniciales del casilla.
+     *
+     * @param partesRestantes Partes restantes
+     */
     public void setPartesRestantes(int partesRestantes) {
         this.partesRestantes = partesRestantes;
     }
 
+    /**
+     * Devuelve las partes restantes del tipo de casilla
+     *
+     * @return Devuelve las partes restantes.
+     */
     public int getPartesRestantes() {
         return partesRestantes;
     }
 
+    /**
+     * Configura el index dependiendo del tipo.
+     */
     public void setTipoIndex() {
         if (this instanceof Escolta) {
             tipoIndex = 1;
@@ -51,20 +68,36 @@ public class TipoCasilla {
         }
     }
 
+    /**
+     * @return Devuelve el index del tipo.
+     */
     public int getTipoIndex() {
 
         return tipoIndex;
     }
 
+    /**
+     * Resta una parte a las restantes.
+     */
     public void restarParte() {
 
         this.partesRestantes--;
     }
 
+    /**
+     * Comprueba si está tocado.
+     *
+     * @return Devuelve verdadero si está tocado.
+     */
     public boolean isTocado() {
         return tocado;
     }
 
+    /**
+     * Cambia el valor del atributo tocado.
+     *
+     * @param tocado Boolean.
+     */
     public void setTocado(boolean tocado) {
         this.tocado = tocado;
     }

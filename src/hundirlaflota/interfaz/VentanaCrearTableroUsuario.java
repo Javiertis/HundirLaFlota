@@ -81,8 +81,7 @@ public class VentanaCrearTableroUsuario extends javax.swing.JFrame implements Ac
             for (int j = Casilla.COLUMNA_MIN; j < Casilla.COLUMNA_MAX; j++) {
                 JButton botonJugador = new JButton();
                 botonJugador.setOpaque(true);
-                botonJugador.setBackground(Casilla.COLOR_VACIA);
-                botonJugador.setIcon(new ImageIcon(Controladora.IMAGEN_VACIA));
+                botonJugador.setBackground(Casilla.COLOR_AGUA);
                 botonJugador.setBorder(new LineBorder(Color.BLACK));
                 botonJugador.setActionCommand(i + ":" + j);
                 botonJugador.addActionListener(this);
@@ -226,7 +225,7 @@ public class VentanaCrearTableroUsuario extends javax.swing.JFrame implements Ac
                         botonesJugador[i][j].setBackground(Casilla.COLOR_BARCO3);
                         break;
                     default:
-                        botonesJugador[i][j].setBackground(Casilla.COLOR_VACIA);
+                        botonesJugador[i][j].setBackground(Casilla.COLOR_AGUA);
                         break;
                 }
             }

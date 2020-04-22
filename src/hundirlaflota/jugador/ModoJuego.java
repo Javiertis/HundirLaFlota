@@ -17,6 +17,7 @@
 package hundirlaflota.jugador;
 
 /**
+ * Los distintos modos de juego.
  *
  * @author Javier Tejedor
  */

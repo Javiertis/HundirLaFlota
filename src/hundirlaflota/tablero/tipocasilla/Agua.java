@@ -17,11 +17,15 @@
 package hundirlaflota.tablero.tipocasilla;
 
 /**
+ * Clase que define el tipo de casilla Agua.
  *
  * @author Javier Tejedor
  */
 public class Agua extends TipoCasilla {
 
+    /**
+     * Crea una instancia de agua.
+     */
     public Agua() {
         super();
         super.setPartesRestantes(0);

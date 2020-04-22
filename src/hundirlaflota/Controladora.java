@@ -51,8 +51,6 @@ public class Controladora {
 
     /**
      * El metodo main de la aplicación.
-     *
-     * @param args
      */
     public static void main(String[] args) {
         Controladora c = new Controladora();
@@ -69,35 +67,17 @@ public class Controladora {
     }
 
     /**
-     *
-     * @return
+     * @return Devuelve el atributo Humano de esta clase.
      */
     public Jugador getHumano() {
         return humano;
     }
 
     /**
-     *
-     * @param humano
-     */
-    public void setHumano(Jugador humano) {
-        this.humano = humano;
-    }
-
-    /**
-     *
-     * @return
+     * @return Devuelve el atributo Maquina de esta clase.
      */
     public Maquina getMaquina() {
         return maquina;
-    }
-
-    /**
-     *
-     * @param maquina
-     */
-    public void setMaquina(Maquina maquina) {
-        this.maquina = maquina;
     }
 
 }

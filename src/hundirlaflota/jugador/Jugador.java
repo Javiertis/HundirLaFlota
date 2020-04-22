@@ -30,13 +30,6 @@ public class Jugador {
     private Tablero tableroPropio;
     private Tablero tableroDeJuego;
 
-    private int barcosRestantes;
-
-    /**
-     * Numero de barcos inicales
-     */
-    public static final int BARCOS_INICIALES = 3;
-
     /**
      * Constructor especificando una instancia de la clase de objeto Tablero.
      *
@@ -44,7 +37,6 @@ public class Jugador {
      */
     public Jugador(Tablero tableroPropio) {
         this.tableroPropio = tableroPropio;
-        this.barcosRestantes = BARCOS_INICIALES;
     }
 
     /**
@@ -52,7 +44,6 @@ public class Jugador {
      */
     public Jugador() {
         this.tableroPropio = new Tablero();
-        this.barcosRestantes = BARCOS_INICIALES;
     }
 
     /**
@@ -67,7 +58,7 @@ public class Jugador {
     /**
      * Configura el tablero de juego.
      *
-     * @param tableroDeJuego
+     * @param tableroDeJuego El tablero de juego del jugador.
      */
     public void setTableroDeJuego(Tablero tableroDeJuego) {
         this.tableroDeJuego = tableroDeJuego;
@@ -85,27 +76,10 @@ public class Jugador {
     /**
      * Configura el tablero propio.
      *
-     * @param tableroPropio
+     * @param tableroPropio El tablero del jugador.
      */
     public void setTableroPropio(Tablero tableroPropio) {
         this.tableroPropio = tableroPropio;
-    }
-
-    /**
-     *
-     * @return Los barcos restantes del jugador.
-     */
-    public int getBarcosRestantes() {
-        return barcosRestantes;
-    }
-
-    /**
-     * Configura los barcos restantes del jugador.
-     *
-     * @param barcosRestantes
-     */
-    public void setBarcosRestantes(int barcosRestantes) {
-        this.barcosRestantes = barcosRestantes;
     }
 
     /**

@@ -17,11 +17,15 @@
 package hundirlaflota.tablero.tipocasilla;
 
 /**
+ * Clase que define el tipo de casilla Escolta.
  *
  * @author Javier Tejedor
  */
 public class Escolta extends TipoCasilla {
 
+    /**
+     * Crea una instancia de Escolta.
+     */
     public Escolta() {
         super();
         super.setPartesRestantes(2);

@@ -17,11 +17,15 @@
 package hundirlaflota.tablero.tipocasilla;
 
 /**
+ * Clase que define el tipo de casilla Portaaviones.
  *
  * @author Javier Tejedor
  */
 public class Portaaviones extends TipoCasilla {
 
+    /**
+     * Crea una instancia de portaaviones.
+     */
     public Portaaviones() {
         super();
         super.setPartesRestantes(4);

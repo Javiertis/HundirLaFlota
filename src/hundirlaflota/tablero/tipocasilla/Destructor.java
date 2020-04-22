@@ -17,11 +17,15 @@
 package hundirlaflota.tablero.tipocasilla;
 
 /**
+ * Clase que define el tipo de casilla Destructor.
  *
  * @author Javier Tejedor
  */
 public class Destructor extends TipoCasilla {
 
+    /**
+     * Crea una instancia de Destructor.
+     */
     public Destructor() {
         super();
         super.setPartesRestantes(3);

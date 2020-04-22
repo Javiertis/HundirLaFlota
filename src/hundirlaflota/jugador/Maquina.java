@@ -51,55 +51,45 @@ public class Maquina extends Jugador {
         ultimasCasillas = new ArrayList<>();
     }
 
+    /**
+     * Devuelve el modo con el que está juegando.
+     *
+     * @return Modo de Juego
+     */
     public ModoJuego getModo() {
         return modo;
     }
 
+    /**
+     * Configura el modo de juego
+     *
+     * @param modo Modo de Juego
+     */
     public void setModo(ModoJuego modo) {
         this.modo = modo;
     }
 
-    public int getContadorDisparos() {
-        return contadorDisparos;
-    }
-
-    public void setContadorDisparos(int contadorDisparos) {
-        this.contadorDisparos = contadorDisparos;
-    }
-
-    public ArrayList<Casilla> getUltimasCasillas() {
-        return ultimasCasillas;
-    }
-
-    public void setUltimasCasillas(ArrayList<Casilla> ultimasCasillas) {
-        this.ultimasCasillas = ultimasCasillas;
-    }
-
-    public ArrayList<Casilla> getCasillasDisparadas() {
-        return casillasDisparadas;
-    }
-
-    public int[] getUltimoDisparoCertero() {
-        return ultimoDisparoCertero;
-    }
-
+    /**
+     * Asigna el ultimo disparo certero.
+     *
+     * @param ultimoDisparoCertero Las coordenadas del disparo que ha dado a
+     * algún barco.
+     */
     public void setUltimoDisparoCertero(int[] ultimoDisparoCertero) {
         this.ultimoDisparoCertero = ultimoDisparoCertero;
     }
 
-    public int[] getDisparoNuevo() {
-        return disparoNuevo;
-    }
-
-    public int[] setDisparo(int[] disparo) {
+    private int[] disparar(int[] disparo) {
         this.disparoNuevo = disparo;
         super.cambiarEstadoCasilla(disparo);
         return this.casillasDisparadas.add(super.getTableroDeJuego().get(new Index(disparo))) ? disparo : null;
     }
 
     /**
+     * Realiza el disparo, con la lógica correspondiente al modo de juego.
      *
-     * @return
+     * @return Devuelve el array de enteros si se ha realizado correctamente el
+     * disparo, si no devuelve null.
      */
     public int[] realizarDisparo() {
         ultimasCasillas.clear();
@@ -113,7 +103,7 @@ public class Maquina extends Jugador {
         if (modo.equals(ModoJuego.ALEATORIO)) {
 
             if (validarDisparo(disparoNuevo)) {
-                return setDisparo(disparoNuevo);
+                return disparar(disparoNuevo);
             } else {
                 return realizarDisparo();
             }
@@ -129,9 +119,7 @@ public class Maquina extends Jugador {
         contadorDisparos = 0;
         int nCasillasAcertadas = 0;
         if (!ultimasCasillas.isEmpty()) {
-            for (Casilla ultimasCasilla : ultimasCasillas) {
-                nCasillasAcertadas += ultimasCasilla.tieneBarco() ? 1 : 0;
-            }
+            nCasillasAcertadas = ultimasCasillas.stream().map((ultimasCasilla) -> ultimasCasilla.tieneBarco() ? 1 : 0).reduce(nCasillasAcertadas, Integer::sum);
 
         }
 
@@ -151,13 +139,13 @@ public class Maquina extends Jugador {
                     contadorDisparos++;
                     if (contadorDisparos >= Casilla.COLUMNA_MAX) {
                         if (validarDisparo(disparo)) {
-                            return setDisparo(disparo);
+                            return disparar(disparo);
                         } else {
                             return realizarDisparo();
                         }
                     }
                 } while (!validarDisparo(proximoDisparo));
-                return setDisparo(proximoDisparo);
+                return disparar(proximoDisparo);
             } else if (deltaEjeY == 0) {
                 int disparoX = ultimasCasillas.get(ultimasCasillas.size() - 1).getFila();
                 do {
@@ -169,14 +157,14 @@ public class Maquina extends Jugador {
                     contadorDisparos++;
                     if (contadorDisparos >= Casilla.FILA_MAX) {
                         if (validarDisparo(disparo)) {
-                            return setDisparo(disparo);
+                            return disparar(disparo);
 
                         } else {
                             return realizarDisparo();
                         }
                     }
                 } while (!validarDisparo(proximoDisparo));
-                return setDisparo(proximoDisparo);
+                return disparar(proximoDisparo);
             }
         } else if (nCasillasAcertadas == 1 /*&& (ultimasCasillas.get(ultimasCasillas.size() - 1).getFila() == ultimoDisparoCertero[0] || ultimasCasillas.get(ultimasCasillas.size() - 1).getColumna() == ultimoDisparoCertero[1])*/) {
             contadorDisparos++;
@@ -196,7 +184,7 @@ public class Maquina extends Jugador {
                         break;
                     default:
                         if (validarDisparo(disparo) && contadorDisparos >= 5) {
-                            return setDisparo(disparo);
+                            return disparar(disparo);
 
                         } else {
                             return realizarDisparo();
@@ -204,16 +192,16 @@ public class Maquina extends Jugador {
                 }
                 contadorDisparos++;
             } while (!validarDisparo(proximoDisparo));
-            return setDisparo(proximoDisparo);
+            return disparar(proximoDisparo);
         }
         if (validarDisparo(disparo)) {
-            return setDisparo(disparo);
+            return disparar(disparo);
         } else {
             return realizarDisparo();
         }
     }
 
-    public boolean validarDisparo(int[] disparo) {
+    private boolean validarDisparo(int[] disparo) {
         return !casillasDisparadas.contains(super.getTableroDeJuego().get(new Index(disparo)))
                 && disparo[0] < Casilla.FILA_MAX
                 && disparo[0] >= Casilla.FILA_MIN
@@ -221,7 +209,7 @@ public class Maquina extends Jugador {
                 && disparo[1] >= Casilla.COLUMNA_MIN;
     }
 
-    public static Tablero generarTableroMaquina() {
+    private static Tablero generarTableroMaquina() {
         Tablero tablero = new Tablero();
         boolean correcto = false;
         Random random = new Random();

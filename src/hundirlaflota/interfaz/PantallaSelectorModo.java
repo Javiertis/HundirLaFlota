@@ -26,6 +26,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
+ * Ventana para seleccionador el modo de juego
+ *
  * @author Javier Tejedor
  */
 public class PantallaSelectorModo extends javax.swing.JFrame {

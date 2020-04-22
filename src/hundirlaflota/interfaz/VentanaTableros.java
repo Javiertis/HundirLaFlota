@@ -36,6 +36,8 @@ import javax.swing.border.LineBorder;
 
 /**
  *
+ * Ventana de Juego
+ *
  * @author Javier Tejedor
  */
 public class VentanaTableros extends javax.swing.JFrame implements ActionListener {
@@ -91,7 +93,7 @@ public class VentanaTableros extends javax.swing.JFrame implements ActionListene
                 panelJugador.add(botonesJugador[i][j]);
 
                 JButton botonOponente = new JButton();
-                botonOponente.setBackground(Casilla.COLOR_VACIA);
+                botonOponente.setBackground(Casilla.COLOR_AGUA);
                 botonOponente.setBorder(new LineBorder(Color.BLACK));
                 botonOponente.setIcon(new ImageIcon(Controladora.IMAGEN_VACIA));
                 botonOponente.setOpaque(true);
@@ -146,7 +148,7 @@ public class VentanaTableros extends javax.swing.JFrame implements ActionListene
     /**
      * Evento que gestiona los disparos.
      *
-     * @param ae
+     * @param ae Action Event de los botones
      */
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -219,7 +221,7 @@ public class VentanaTableros extends javax.swing.JFrame implements ActionListene
                         botonesJugador[i][j].setBackground(Casilla.COLOR_BARCO3);
                         break;
                     default:
-                        botonesJugador[i][j].setBackground(Casilla.COLOR_VACIA);
+                        botonesJugador[i][j].setBackground(Casilla.COLOR_AGUA);
                         break;
                 }
             }
