@@ -1,7 +1,5 @@
-# HUNDIR LA FLOTA ![Java CI](https://github.com/Javiertis/HundirLaFlota/workflows/Java%20CI/badge.svg)
-
-## Javier Tejedor
-
+# HUNDIR LA FLOTA 
+![Java CI](https://github.com/Javiertis/HundirLaFlota/workflows/Java%20CI/badge.svg) ![CodeQL](https://github.com/Javiertis/HundirLaFlota/workflows/CodeQL/badge.svg)
 
 ### Características
 
