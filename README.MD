@@ -1,4 +1,4 @@
-# HUNDIR LA FLOTA
+# HUNDIR LA FLOTA ![Java CI](https://github.com/Javiertis/HundirLaFlota/workflows/Java%20CI/badge.svg)
 
 ## Javier Tejedor
 
