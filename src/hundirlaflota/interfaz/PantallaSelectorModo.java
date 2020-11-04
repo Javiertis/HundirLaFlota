@@ -64,6 +64,7 @@ public class PantallaSelectorModo extends javax.swing.JFrame {
 
         cboModo = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        cbTuto = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +77,8 @@ public class PantallaSelectorModo extends javax.swing.JFrame {
             }
         });
 
+        cbTuto.setText("Mostrar tutorial");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,6 +89,10 @@ public class PantallaSelectorModo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(74, 74, 74))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(cbTuto)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +101,9 @@ public class PantallaSelectorModo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboModo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cbTuto)
+                .addContainerGap())
         );
 
         pack();
@@ -103,14 +112,18 @@ public class PantallaSelectorModo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.c.getMaquina().setModo((ModoJuego) this.cboModo.getSelectedItem());
+        this.setVisible(false);
         new VentanaCrearTableroUsuario(c).setVisible(true);
-        JOptionPane.showMessageDialog(this, "Tienes 3 barcos de longitud 2, 3, 4.");
-        JOptionPane.showMessageDialog(this, "Para colocarlos necesitas seleccionar dos casillas la inical y la final y dar al botón aceptar");
-        JOptionPane.showMessageDialog(this, "Si has seleccionado dos casillas no validas te saldrá una advertencia");
+        if (cbTuto.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Tienes 3 barcos de longitud 2, 3, 4.");
+            JOptionPane.showMessageDialog(this, "Para colocarlos necesitas seleccionar dos casillas la inical y la final y dar al botón aceptar");
+            JOptionPane.showMessageDialog(this, "Si has seleccionado dos casillas no validas te saldrá una advertencia");
+        }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox cbTuto;
     private javax.swing.JComboBox<String> cboModo;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
