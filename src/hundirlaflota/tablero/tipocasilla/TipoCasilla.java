@@ -21,18 +21,26 @@ package hundirlaflota.tablero.tipocasilla;
  *
  * @author Javier Tejedor
  */
-public class TipoCasilla {
+public abstract class TipoCasilla {
 
     private int partesRestantes;
     private boolean tocado;
-    private int tipoIndex;
+    private final int tipoIndex;
 
     /**
      * Genera una casilla vacía
      */
     public TipoCasilla() {
         tocado = false;
-        setTipoIndex();
+        if (this instanceof Escolta) {
+            tipoIndex = 1;
+        } else if (this instanceof Destructor) {
+            tipoIndex = 2;
+        } else if (this instanceof Portaaviones) {
+            tipoIndex = 3;
+        } else {
+            tipoIndex = 0;
+        }
     }
 
     /**
@@ -51,21 +59,6 @@ public class TipoCasilla {
      */
     public int getPartesRestantes() {
         return partesRestantes;
-    }
-
-    /**
-     * Configura el index dependiendo del tipo.
-     */
-    public void setTipoIndex() {
-        if (this instanceof Escolta) {
-            tipoIndex = 1;
-        } else if (this instanceof Destructor) {
-            tipoIndex = 2;
-        } else if (this instanceof Portaaviones) {
-            tipoIndex = 3;
-        } else {
-            tipoIndex = 0;
-        }
     }
 
     /**

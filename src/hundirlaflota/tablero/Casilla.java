@@ -73,8 +73,8 @@ public class Casilla {
      */
     public static int COLUMNA_MIN = 0;
 
-    private int fila;
-    private int columna;
+    private final int fila;
+    private final int columna;
     private TipoCasilla tipo;
 
     /**

@@ -166,7 +166,8 @@ public class Maquina extends Jugador {
                 } while (!validarDisparo(proximoDisparo));
                 return disparar(proximoDisparo);
             }
-        } else if (nCasillasAcertadas == 1 /*&& (ultimasCasillas.get(ultimasCasillas.size() - 1).getFila() == ultimoDisparoCertero[0] || ultimasCasillas.get(ultimasCasillas.size() - 1).getColumna() == ultimoDisparoCertero[1])*/) {
+        } else if (nCasillasAcertadas == 1
+                && (ultimasCasillas.get(ultimasCasillas.size() - 1).getFila() == ultimoDisparoCertero[0] || ultimasCasillas.get(ultimasCasillas.size() - 1).getColumna() == ultimoDisparoCertero[1])) {
             contadorDisparos++;
             do {
                 switch (contadorDisparos) {
@@ -180,7 +181,7 @@ public class Maquina extends Jugador {
                         proximoDisparo = new int[]{ultimoDisparoCertero[0], (ultimoDisparoCertero[1] + 1) >= Casilla.COLUMNA_MAX ? Casilla.COLUMNA_MIN : ultimoDisparoCertero[1] + 1};
                         break;
                     case 4:
-                        proximoDisparo = new int[]{ultimoDisparoCertero[0], (ultimoDisparoCertero[1] - 1) < Casilla.COLUMNA_MIN ? Casilla.FILA_MAX - 1 : ultimoDisparoCertero[1] - 1};
+                        proximoDisparo = new int[]{ultimoDisparoCertero[0], (ultimoDisparoCertero[1] - 1) < Casilla.COLUMNA_MIN ? Casilla.COLUMNA_MAX - 1 : ultimoDisparoCertero[1] - 1};
                         break;
                     default:
                         if (validarDisparo(disparo) && contadorDisparos >= 5) {
