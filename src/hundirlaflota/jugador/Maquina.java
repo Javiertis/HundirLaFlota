@@ -101,12 +101,7 @@ public class Maquina extends Jugador {
         Random rnd = new Random();
         disparoNuevo = new int[]{rnd.nextInt(Casilla.FILA_MAX), rnd.nextInt(Casilla.COLUMNA_MAX)};
         if (modo.equals(ModoJuego.ALEATORIO)) {
-
-            if (validarDisparo(disparoNuevo)) {
-                return disparar(disparoNuevo);
-            } else {
-                return realizarDisparo();
-            }
+            return validarDisparo(disparoNuevo) ? disparar(disparoNuevo) : realizarDisparo();
         } else {
 
             return modoLogico(disparoNuevo);
@@ -138,11 +133,7 @@ public class Maquina extends Jugador {
                     proximoDisparo = new int[]{ultimoDisparoCertero[0], disparoY};
                     contadorDisparos++;
                     if (contadorDisparos >= Casilla.COLUMNA_MAX) {
-                        if (validarDisparo(disparo)) {
-                            return disparar(disparo);
-                        } else {
-                            return realizarDisparo();
-                        }
+                        return validarDisparo(disparo) ? disparar(disparo) : realizarDisparo();
                     }
                 } while (!validarDisparo(proximoDisparo));
                 return disparar(proximoDisparo);
@@ -156,12 +147,7 @@ public class Maquina extends Jugador {
                     proximoDisparo = new int[]{disparoX, ultimoDisparoCertero[1]};
                     contadorDisparos++;
                     if (contadorDisparos >= Casilla.FILA_MAX) {
-                        if (validarDisparo(disparo)) {
-                            return disparar(disparo);
-
-                        } else {
-                            return realizarDisparo();
-                        }
+                        return validarDisparo(disparo) ? disparar(disparo) : realizarDisparo();
                     }
                 } while (!validarDisparo(proximoDisparo));
                 return disparar(proximoDisparo);
@@ -184,22 +170,13 @@ public class Maquina extends Jugador {
                         proximoDisparo = new int[]{ultimoDisparoCertero[0], (ultimoDisparoCertero[1] - 1) < Casilla.COLUMNA_MIN ? Casilla.COLUMNA_MAX - 1 : ultimoDisparoCertero[1] - 1};
                         break;
                     default:
-                        if (validarDisparo(disparo) && contadorDisparos >= 5) {
-                            return disparar(disparo);
-
-                        } else {
-                            return realizarDisparo();
-                        }
+                        return validarDisparo(disparo) && contadorDisparos >= 5 ? disparar(disparo) : realizarDisparo();
                 }
                 contadorDisparos++;
             } while (!validarDisparo(proximoDisparo));
             return disparar(proximoDisparo);
         }
-        if (validarDisparo(disparo)) {
-            return disparar(disparo);
-        } else {
-            return realizarDisparo();
-        }
+        return validarDisparo(disparo) ? disparar(disparo) : realizarDisparo();
     }
 
     private boolean validarDisparo(int[] disparo) {
@@ -215,21 +192,27 @@ public class Maquina extends Jugador {
         boolean correcto = false;
         Random random = new Random();
         while (!correcto) {
-            correcto = tablero.cambiarTipoCasillas(new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
+            correcto = tablero.cambiarTipoCasillas(
                     new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
-                    new Escolta());
+                    new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
+                    new Escolta()
+            );
         }
         correcto = false;
         while (!correcto) {
-            correcto = tablero.cambiarTipoCasillas(new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
+            correcto = tablero.cambiarTipoCasillas(
                     new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
-                    new Destructor());
+                    new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
+                    new Destructor()
+            );
         }
         correcto = false;
         while (!correcto) {
-            correcto = tablero.cambiarTipoCasillas(new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
+            correcto = tablero.cambiarTipoCasillas(
                     new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
-                    new Portaaviones());
+                    new int[]{random.nextInt(Casilla.FILA_MAX), random.nextInt(Casilla.COLUMNA_MAX)},
+                    new Portaaviones()
+            );
         }
         return tablero;
     }
